@@ -1,11 +1,40 @@
 import React, { useState, useEffect } from "react";
-import Die from "./Die";
+import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
+  const [count, setCount] = useState(0);
+  const [timer, setTimer] = useState(0);
+  const [bestTime, setBestTime] = useState(
+    JSON.parse(localStorage.getItem("bestTime")) || []
+  );
+
+  useEffect(() => {
+    const yourBestTime = localStorage.getItem("bestTime");
+    if (tenzies) {
+      if (!yourBestTime) {
+        localStorage.setItem("bestTime", JSON.stringify(timer));
+      } else if (timer < yourBestTime) {
+        setBestTime(timer);
+      }
+    }
+  }, [tenzies, timer]);
+
+  useEffect(() => {
+    if (!tenzies) {
+      let sec = setInterval(() => {
+        setTimer((prevTimer) => prevTimer + 1);
+      }, 1000);
+      return () => {
+        clearInterval(sec);
+      };
+    } else {
+      setTimer((prevTimer) => prevTimer);
+    }
+  }, [tenzies]);
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
@@ -43,6 +72,8 @@ function App() {
     } else {
       setTenzies(false);
       setDice(allNewDice());
+      setTimer(0);
+      setCount(0);
     }
   }
 
@@ -71,8 +102,28 @@ function App() {
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
       </p>
+      <div className="stats row">
+        <h3>
+          Time
+          <p className="timer">{timer}s</p>
+        </h3>
+        <h3>
+          Best Time
+          <p className="bestTime">{bestTime}s</p>
+        </h3>
+        <h3>
+          Rolls
+          <p className="rolls">{count}</p>
+        </h3>
+      </div>
       <div className="dice-container">{diceElm}</div>
-      <button className="rolldBtn" onClick={rollDice}>
+      <button
+        className="rolldBtn"
+        onClick={() => {
+          rollDice();
+          setCount(count + 1);
+        }}
+      >
         {tenzies ? "New Game" : "Roll"}
       </button>
     </main>

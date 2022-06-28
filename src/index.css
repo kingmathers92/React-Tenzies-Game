@@ -13,8 +13,8 @@ body {
 
 main {
   background-color: #f5f5f5;
-  height: 400px;
-  max-width: 700px;
+  height: 420px;
+  max-width: 500px;
   border-radius: 10px;
   padding: 20px;
   display: flex;
@@ -23,30 +23,116 @@ main {
   align-items: center;
 }
 
+/*Dice*/
 .dice-container {
   display: grid;
   grid-template: auto auto / repeat(5, 1fr);
-  gap: 20px;
 }
 
 .die-face {
-  height: 35px;
-  width: 35px;
+  height: 50px;
+  width: 50px;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
-  border-radius: 4px;
+  border-radius: 5px;
+  display: flex;
+  margin-left: 12px;
+  margin-right: 12px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  padding: 2px;
+}
+
+.dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgb(46, 46, 46);
+}
+
+.__1 {
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
+  padding: 19px;
 }
 
-.die-num {
+.__2 {
+  width: 45px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.__2 .dot:nth-of-type(2) {
+  align-self: flex-end;
+}
+
+.__3 {
+  width: 45px;
+  display: flex;
+  justify-content: space-between;
+  padding: 5px;
+}
+
+.__3 .dot:nth-of-type(3) {
+  align-self: flex-end;
+}
+
+.__3 .dot:nth-of-type(2) {
+  align-self: center;
+}
+
+.__4 {
+  padding: 5px;
+  width: 45px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.__4 .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.__5 {
+  padding: 5px;
+  width: 45px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.__5 .column:nth-of-type(2) {
+  justify-content: center;
+}
+
+.__5 .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.__6 {
+  padding: 5px;
+  width: 45px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.__6 .column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+/* .die-num {
   font-size: 2rem;
   color: #2b283a;
   font-family: "Karla", sans-serif;
   font-weight: 700;
   font-size: 20px;
-}
+} */
 
 .rolldBtn {
   background-color: #5035ff;
@@ -55,7 +141,7 @@ main {
   border-radius: 4px;
   color: #fff;
   width: 130px;
-  height: 40px;
+  height: 70px;
   font-family: "Karla";
   font-size: 16px;
   cursor: pointer;
@@ -69,14 +155,52 @@ main {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
+/* Text */
 .title {
   font-size: 40px;
   margin: 0;
 }
 
-.instructions {
+.instructions,
+.timer,
+.bestTime,
+.rolls {
   font-family: "Inter", sans-serif;
   font-weight: 400;
   margin-top: 0;
   text-align: center;
+}
+
+.stats {
+  display: flex;
+  justify-content: space-around;
+  width: 400px;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Animation */
+.blink_me {
+  animation: blinker 1s linear infinite;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+/*Mobile tweaks*/
+@media only screen and (max-width: 600px) {
+  main {
+    max-width: 350px;
+  }
+
+  .die-face {
+    width: 45px;
+    height: 45px;
+  }
 }

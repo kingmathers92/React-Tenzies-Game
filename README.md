@@ -6,15 +6,15 @@
 
 I created this project using React while applying what I learned about React Hooks.
 
-## To Do:
+##To Do🔧:
 
 - [x] Add dots to the dice instead of number
-- [x] Add sound effect when you win the game
-- [x] Dice blinks when you win
-- [x] Trach number of rolls
+- [ ] Add sound effect when you win the game
+- [ ] Dice blinks when you win
+- [x] Track number of rolls
 - [x] Track time it took to win
 - [x] Save best time & score to localstorage
 
 ## Preview:
 
-<div align="center"><center>![Game Preview](src/tenzies-preview.png)</div>
+<div align="center"><center>![Game Preview](src/assets/preview.png)</div>
