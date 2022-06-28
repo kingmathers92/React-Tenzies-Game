@@ -2,11 +2,11 @@
 
 ### A dice game where you hold one or more dices with the smae value and keep rolling untill you get 10 matches.
 
-# Motivation:
+## Motivation:
 
 I created this project using React while applying what I learned about React Hooks.
 
-# To Do:
+## To Do:
 
 - [x] Add dots to the dice instead of number
 - [x] Add sound effect when you win the game
@@ -15,6 +15,6 @@ I created this project using React while applying what I learned about React Hoo
 - [x] Track time it took to win
 - [x] Save best time & score to localstorage
 
-# Preview:
+## Preview:
 
-![Game Preview](https://ibb.co/6yKKtHx)
+![Game Preview](src/tenzies-preview.png)
