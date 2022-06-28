@@ -1,4 +1,4 @@
-<div align="center"><center>[Tenzies](https://kingmathers92.github.io/React-Tenzies-Game/)</div>
+# <div align="center"><center>[Tenzies](https://kingmathers92.github.io/React-Tenzies-Game/)</div>
 
 ### A dice game where you hold one or more dices with the smae value and keep rolling untill you get 10 matches.
 
@@ -15,5 +15,6 @@ I created this project using React while applying what I learned about React Hoo
 - [x] Track time it took to win
 - [x] Save best time & score to localstorage
 
-#Preview:
-![](https://freeimage.host/i/jqjXfa)
+# Preview:
+
+![Game Preview](https://freeimage.host/i/jqjXfa)
