@@ -17,4 +17,4 @@ I created this project using React while applying what I learned about React Hoo
 
 # Preview:
 
-![Game Preview](https://freeimage.host/i/jqjXfa)
+![Game Preview](https://ibb.co/6yKKtHx)
