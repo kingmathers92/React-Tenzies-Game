@@ -17,4 +17,4 @@ I created this project using React while applying what I learned about React Hoo
 
 ## Preview:
 
-![Game Preview](src/tenzies-preview.png)
+<div align="center"><center>![Game Preview](src/tenzies-preview.png)</div>
