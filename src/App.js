@@ -18,8 +18,9 @@ function App() {
       if (!yourBestTime) {
         localStorage.setItem("bestTime", JSON.stringify(timer));
       } else if (timer < yourBestTime) {
-        setBestTime(timer);
+        localStorage.setItem("bestTime", JSON.stringify(timer));
       }
+      setBestTime(timer);
     }
   }, [tenzies, timer]);
 
