@@ -74,6 +74,7 @@ function App() {
       setDice(allNewDice());
       setTimer(0);
       setCount(0);
+      setBestTime(localStorage.getItem("bestTime"));
     }
   }
 
