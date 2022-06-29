@@ -18,9 +18,8 @@ function App() {
       if (!yourBestTime) {
         localStorage.setItem("bestTime", JSON.stringify(timer));
       } else if (timer < yourBestTime) {
-        localStorage.setItem("bestTime", JSON.stringify(timer));
+        setBestTime(timer);
       }
-      setBestTime(timer);
     }
   }, [tenzies, timer]);
 
@@ -70,11 +69,12 @@ function App() {
           return die.isHeld ? die : generateNewDie();
         })
       );
+      setCount((prevCount) => prevCount + 1);
     } else {
       setTenzies(false);
+      setCount(0);
       setDice(allNewDice());
       setTimer(0);
-      setCount(0);
       setBestTime(localStorage.getItem("bestTime"));
     }
   }
@@ -123,7 +123,6 @@ function App() {
         className="rolldBtn"
         onClick={() => {
           rollDice();
-          setCount(count + 1);
         }}
       >
         {tenzies ? "New Game" : "Roll"}
