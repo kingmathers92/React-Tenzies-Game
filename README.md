@@ -6,7 +6,7 @@
 
 I created this project using React while applying what I learned about React Hooks.
 
-##To Do🔧:
+## To Do🔧:
 
 - [x] Add dots to the dice instead of number
 - [ ] Add sound effect when you win the game
