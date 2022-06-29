@@ -183,7 +183,7 @@ main {
 }
 
 /* Animation */
-/* .blink_me {
+.blink_me {
   animation: blinker 1s linear infinite;
 }
 
@@ -191,7 +191,7 @@ main {
   50% {
     opacity: 0;
   }
-} */
+}
 
 /*Mobile tweaks*/
 @media only screen and (max-width: 600px) {

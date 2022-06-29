@@ -9,7 +9,7 @@ function App() {
   const [count, setCount] = useState(0);
   const [timer, setTimer] = useState(0);
   const [bestTime, setBestTime] = useState(
-    JSON.parse(localStorage.getItem("bestTime")) || []
+    JSON.parse(localStorage.getItem("bestTime")) || null
   );
 
   useEffect(() => {
@@ -75,7 +75,10 @@ function App() {
       setCount(0);
       setDice(allNewDice());
       setTimer(0);
-      setBestTime(localStorage.getItem("bestTime"));
+      setBestTime(
+        timer,
+        localStorage.setItem("bestTime", JSON.stringify(timer))
+      );
     }
   }
 
@@ -85,6 +88,16 @@ function App() {
         return die.id === id ? { ...die, isHeld: !die.isHeld } : die;
       })
     );
+  }
+
+  function formatTime(ms) {
+    let sec = Math.round(ms / 1000);
+    let min;
+    if (sec > 60) {
+      min = ~~(sec % 60);
+      return `${min} min ${sec} s`;
+    }
+    return `${sec} s`;
   }
 
   const diceElm = dice.map((die) => (
@@ -106,16 +119,16 @@ function App() {
       </p>
       <div className="stats row">
         <h3>
-          Time
+          Time ⏱️
           <p className="timer">{timer}s</p>
         </h3>
         <h3>
-          Best Time
-          <p className="bestTime">{bestTime}</p>
+          Best Time 🏆
+          <p className="bestTime">{bestTime}s</p>
         </h3>
         <h3>
-          Rolls
-          <p className="rolls">{count}</p>
+          Rolls 🎲
+          <p className="rolls">{count} </p>
         </h3>
       </div>
       <div className="dice-container">{diceElm}</div>

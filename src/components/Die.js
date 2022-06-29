@@ -3,10 +3,10 @@ export default function Die({ value, holdDice, isHeld }) {
     backgroundColor: isHeld ? "#59E391" : "white",
   };
   return (
-    <div className="die-face" style={styles} onClick={holdDice}>
+    <div className={"die-face"} style={styles} onClick={holdDice}>
       {value === 1 && (
         <div className={`__${value}`}>
-          <span className="dot"></span>
+          <span className={"dot"}></span>
         </div>
       )}
       {value === 2 && (
