@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
+// import useSound from "use-sound";
+// import clapSfx from "./assets/aplausos.mp3";
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
@@ -11,6 +13,12 @@ function App() {
   const [bestTime, setBestTime] = useState(
     JSON.parse(localStorage.getItem("bestTime")) || null
   );
+
+  // const crowdClap = () => {
+  //   const [play] = useSound(clapSfx);
+
+  //   return { play };
+  // };
 
   useEffect(() => {
     const yourBestTime = localStorage.getItem("bestTime");
@@ -75,10 +83,6 @@ function App() {
       setCount(0);
       setDice(allNewDice());
       setTimer(0);
-      setBestTime(
-        timer,
-        localStorage.setItem("bestTime", JSON.stringify(timer))
-      );
     }
   }
 
@@ -90,15 +94,15 @@ function App() {
     );
   }
 
-  function formatTime(ms) {
-    let sec = Math.round(ms / 1000);
-    let min;
-    if (sec > 60) {
-      min = ~~(sec % 60);
-      return `${min} min ${sec} s`;
-    }
-    return `${sec} s`;
-  }
+  // function formatTime(ms) {
+  //   let sec = Math.round(ms / 1000);
+  //   let min;
+  //   if (sec > 60) {
+  //     min = ~~(sec % 60);
+  //     return `${min} min ${sec} s`;
+  //   }
+  //   return `${sec} s`;
+  // }
 
   const diceElm = dice.map((die) => (
     <Die
