@@ -2,8 +2,23 @@ import React, { useState, useEffect } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
-// import useSound from "use-sound";
-// import clapSfx from "./assets/aplausos.mp3";
+//import useSound from "use-sound";
+import { Howl, Howler } from "howler";
+import diceRoll from "./assets/rolling-dice.mp3";
+import popDown from "./assets/pop-down.mp3";
+import clap from "./assets/applause.mp3";
+import useWindowSize from "./components/usewindowsize";
+
+const sound = new Howl({
+  src: [clap],
+});
+const sound1 = new Howl({
+  src: [diceRoll],
+});
+const sound2 = new Howl({
+  src: [popDown],
+});
+Howler.volume(0.5);
 
 function App() {
   const [dice, setDice] = useState(allNewDice());
@@ -14,11 +29,7 @@ function App() {
     JSON.parse(localStorage.getItem("bestTime")) || null
   );
 
-  // const crowdClap = () => {
-  //   const [play] = useSound(clapSfx);
-
-  //   return { play };
-  // };
+  const size = useWindowSize();
 
   useEffect(() => {
     const yourBestTime = localStorage.getItem("bestTime");
@@ -94,16 +105,6 @@ function App() {
     );
   }
 
-  // function formatTime(ms) {
-  //   let sec = Math.round(ms / 1000);
-  //   let min;
-  //   if (sec > 60) {
-  //     min = ~~(sec % 60);
-  //     return `${min} min ${sec} s`;
-  //   }
-  //   return `${sec} s`;
-  // }
-
   const diceElm = dice.map((die) => (
     <Die
       value={die.value}
@@ -115,8 +116,13 @@ function App() {
 
   return (
     <main>
-      {tenzies && <Confetti />}
-      <h1 className="title">Tenzies</h1>
+      {tenzies
+        ? ((<Confetti height={size.height} width={size.width} gravity={0.2} />),
+          sound.play())
+        : ""}
+      <h1 className={tenzies ? "title blink_me" : " title"}>
+        {tenzies ? "You Won!" : "Tenzies"}
+      </h1>
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls.
@@ -124,7 +130,7 @@ function App() {
       <div className="stats row">
         <h3>
           Time ⏱️
-          <p className="timer">{timer}s</p>
+          <p className="timer">{timer}</p>
         </h3>
         <h3>
           Best Time 🏆
@@ -135,11 +141,14 @@ function App() {
           <p className="rolls">{count} </p>
         </h3>
       </div>
-      <div className="dice-container">{diceElm}</div>
+      <span onClick={() => sound2.play()} className="dice-container">
+        {diceElm}
+      </span>
       <button
         className="rolldBtn"
         onClick={() => {
           rollDice();
+          sound1.play();
         }}
       >
         {tenzies ? "New Game" : "Roll"}

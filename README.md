@@ -9,11 +9,10 @@ I created this project using React while applying what I learned about React Hoo
 ## To Do🔧:
 
 - [x] Add dots to the dice instead of number
-- [ ] Add sound effect when you win the game
-- [ ] Dice blinks when you win
 - [x] Track number of rolls
 - [x] Track time it took to win
 - [x] Save best time & score to localstorage
+- [x] Add sound effects: Used howler.js library, first time playing with sound. Next time I'd use useSound hook made by @joshwcomeau
 
 ## Preview:
 
