@@ -2,21 +2,19 @@ import React, { useState, useEffect } from "react";
 import Die from "./components/Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
-//import useSound from "use-sound";
 import { Howl, Howler } from "howler";
 import diceRoll from "./assets/rolling-dice.mp3";
 import popDown from "./assets/pop-down.mp3";
 import clap from "./assets/applause.mp3";
-import useWindowSize from "./components/usewindowsize";
 
 const sound = new Howl({
-  src: [clap],
+  src: clap,
 });
 const sound1 = new Howl({
-  src: [diceRoll],
+  src: diceRoll,
 });
 const sound2 = new Howl({
-  src: [popDown],
+  src: popDown,
 });
 Howler.volume(0.5);
 
@@ -28,8 +26,6 @@ function App() {
   const [bestTime, setBestTime] = useState(
     JSON.parse(localStorage.getItem("bestTime")) || null
   );
-
-  const size = useWindowSize();
 
   useEffect(() => {
     const yourBestTime = localStorage.getItem("bestTime");
@@ -77,7 +73,7 @@ function App() {
     for (let i = 0; i < 10; i++) {
       newDice.push(generateNewDie());
     }
-    console.log(newDice);
+    //console.log(newDice);
     return newDice;
   }
 
@@ -116,11 +112,9 @@ function App() {
 
   return (
     <main>
-      {tenzies
-        ? ((<Confetti height={size.height} width={size.width} gravity={0.2} />),
-          sound.play())
-        : ""}
-      <h1 className={tenzies ? "title blink_me" : " title"}>
+      {tenzies && <Confetti />}
+      <span className="hide">{tenzies && sound.play()}</span>
+      <h1 className={tenzies ? "title blink_me" : "title"}>
         {tenzies ? "You Won!" : "Tenzies"}
       </h1>
       <p className="instructions">
