@@ -36,6 +36,7 @@ function App() {
         setBestTime(timer);
       }
     }
+    console.log(yourBestTime);
   }, [tenzies, timer]);
 
   useEffect(() => {
