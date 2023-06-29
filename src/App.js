@@ -32,11 +32,12 @@ function App() {
     if (tenzies) {
       if (!yourBestTime) {
         localStorage.setItem("bestTime", JSON.stringify(timer));
-      } else if (timer < yourBestTime) {
+        setBestTime(timer);
+      } else if (timer < parseInt(yourBestTime)) {
+        localStorage.setItem("bestTime", JSON.stringify(timer));
         setBestTime(timer);
       }
     }
-    console.log(yourBestTime);
   }, [tenzies, timer]);
 
   useEffect(() => {
