@@ -75,7 +75,6 @@ function App() {
     for (let i = 0; i < 10; i++) {
       newDice.push(generateNewDie());
     }
-    //console.log(newDice);
     return newDice;
   }
 
