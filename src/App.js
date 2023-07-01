@@ -10,9 +10,11 @@ import clap from "./assets/applause.mp3";
 const sound = new Howl({
   src: clap,
 });
+
 const sound1 = new Howl({
   src: diceRoll,
 });
+
 const sound2 = new Howl({
   src: popDown,
 });
