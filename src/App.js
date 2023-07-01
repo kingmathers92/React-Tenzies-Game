@@ -14,7 +14,7 @@ const sound = new Howl({
 const sound1 = new Howl({
   src: diceRoll,
 });
-
+console.log("heya");
 const sound2 = new Howl({
   src: popDown,
 });
