@@ -10,6 +10,7 @@
 
 # production
 /build
+/tenzies
 
 # misc
 .DS_Store

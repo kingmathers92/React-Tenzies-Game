@@ -131,7 +131,7 @@ function App() {
         </h3>
         <h3>
           Best Time 🏆
-          <p className="bestTime">{bestTime}s</p>
+          <p className="bestTime">{bestTime ? `${bestTime}s` : "N/A"}</p>
         </h3>
         <h3>
           Rolls 🎲
