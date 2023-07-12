@@ -13,6 +13,8 @@ I created this project using React while applying what I learned about React Hoo
 - [x] Track time it took to win
 - [x] Save best time & score to localstorage
 - [x] Add sound effects: Used howler.js library, first time playing with sound. Next time I'd use useSound hook made by @joshwcomeau
+- [x] Added SplashScreen & Start game
+- [x] Convert to Android
 
 ## Preview:
 
