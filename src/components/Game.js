@@ -1,12 +1,11 @@
-<<<<<<< HEAD
 import React, { useState, useEffect } from "react";
-import Die from "./components/Die";
+import Die from "./Die";
 import { nanoid } from "nanoid";
 import Confetti from "react-confetti";
 import { Howl, Howler } from "howler";
-import diceRoll from "./assets/rolling-dice.mp3";
-import popDown from "./assets/pop-down.mp3";
-import clap from "./assets/applause.mp3";
+import diceRoll from "../assets/rolling-dice.mp3";
+import popDown from "../assets/pop-down.mp3";
+import clap from "../assets/applause.mp3";
 
 const sound = new Howl({
   src: clap,
@@ -15,13 +14,13 @@ const sound = new Howl({
 const sound1 = new Howl({
   src: diceRoll,
 });
-console.log("heya");
+
 const sound2 = new Howl({
   src: popDown,
 });
 Howler.volume(0.5);
 
-function App() {
+const Game = () => {
   const [dice, setDice] = useState(allNewDice());
   const [tenzies, setTenzies] = useState(false);
   const [count, setCount] = useState(0);
@@ -29,6 +28,7 @@ function App() {
   const [bestTime, setBestTime] = useState(
     JSON.parse(localStorage.getItem("bestTime")) || null
   );
+  const [gameStarted, setGameStarted] = useState(false); // Track whether the game has started
 
   useEffect(() => {
     const yourBestTime = localStorage.getItem("bestTime");
@@ -44,26 +44,24 @@ function App() {
   }, [tenzies, timer]);
 
   useEffect(() => {
-    if (!tenzies) {
+    if (gameStarted && !tenzies) {
       let sec = setInterval(() => {
         setTimer((prevTimer) => prevTimer + 1);
       }, 1000);
       return () => {
         clearInterval(sec);
       };
-    } else {
-      setTimer((prevTimer) => prevTimer);
     }
-  }, [tenzies]);
+  }, [gameStarted, tenzies]);
 
   useEffect(() => {
     const allHeld = dice.every((die) => die.isHeld);
     const firstValue = dice[0].value;
     const allSameValue = dice.every((die) => die.value === firstValue);
-    if (allHeld && allSameValue) {
+    if (gameStarted && allHeld && allSameValue) {
       setTenzies(true);
     }
-  }, [dice]);
+  }, [dice, gameStarted]);
 
   function generateNewDie() {
     return {
@@ -81,19 +79,25 @@ function App() {
     return newDice;
   }
 
+  function startGame() {
+    setGameStarted(true);
+  }
+
   function rollDice() {
-    if (!tenzies) {
+    if (gameStarted && !tenzies) {
       setDice((prevDice) =>
         prevDice.map((die) => {
           return die.isHeld ? die : generateNewDie();
         })
       );
       setCount((prevCount) => prevCount + 1);
-    } else {
+      sound1.play();
+    } else if (tenzies) {
       setTenzies(false);
       setCount(0);
       setDice(allNewDice());
       setTimer(0);
+      sound2.play();
     }
   }
 
@@ -139,46 +143,22 @@ function App() {
           <p className="rolls">{count} </p>
         </h3>
       </div>
-      <span onClick={() => sound2.play()} className="dice-container">
-        {diceElm}
-      </span>
-      <button
-        className="rolldBtn"
-        onClick={() => {
-          rollDice();
-          sound1.play();
-        }}
-      >
-        {tenzies ? "New Game" : "Roll"}
-      </button>
+      {gameStarted ? (
+        <span onClick={() => sound2.play()} className="dice-container">
+          {diceElm}
+        </span>
+      ) : (
+        <button className="rolldBtn" onClick={startGame}>
+          Start Game
+        </button>
+      )}
+      {gameStarted && (
+        <button className="rolldBtn" onClick={rollDice}>
+          {tenzies ? "New Game" : "Roll"}
+        </button>
+      )}
     </main>
   );
-}
+};
 
-export default App;
-||||||| empty tree
-=======
-import React, { useState, useEffect } from "react";
-import SplashScreen from "./components/SplashScreen";
-import Game from "./components/Game";
-
-function App() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 3000);
-
-    return () => clearTimeout(timer);
-  }, []);
-
-  if (loading) {
-    return <SplashScreen onTransition={() => setLoading(false)} />;
-  }
-
-  return <Game />;
-}
-
-export default App;
->>>>>>> gh-pages
+export default Game;
