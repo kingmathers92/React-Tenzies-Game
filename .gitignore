@@ -11,6 +11,11 @@
 # production
 /build
 
+# expo
+.expo
+./expo
+/expo
+
 # misc
 .DS_Store
 .env.local

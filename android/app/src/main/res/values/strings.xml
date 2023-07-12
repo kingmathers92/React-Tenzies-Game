@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Tenzies</string>
+    <string name="title_activity_main">Tenzies</string>
+    <string name="package_name">io.ionic.tenzies</string>
+    <string name="custom_url_scheme">io.ionic.tenzies</string>
+</resources>

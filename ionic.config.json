@@ -1,0 +1,7 @@
+{
+    "name": "Tenzies",
+    "integrations": {
+      "capacitor": {}
+    },
+    "type": "react"
+  }
