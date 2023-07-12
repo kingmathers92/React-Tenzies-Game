@@ -1,0 +1,15 @@
+node_modules
+.node_modules
+./node_modules
+
+android
+/android
+.android
+
+ios
+.ios
+/ios
+
+.expo
+./expo
+expo
