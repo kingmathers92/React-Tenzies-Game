@@ -1,0 +1,64 @@
+.splash-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+  }
+
+  .splash-container .loading-container {
+    text-align: center;
+  }
+
+  .splash-container .logo {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 20px;
+    opacity: 0;
+    animation: fade-in 1s ease-in-out forwards;
+    border-radius: 50%;
+  }
+
+  .splash-container .loading-animation {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+  }
+
+  .rolling-dice {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-content: space-between;
+    animation: rolling 1s infinite linear;
+  }
+
+  .dot {
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    background-color: #59e391;
+    border-radius: 50%;
+  }
+
+  @keyframes fade-in {
+    0% {
+      opacity: 0;
+      transform: scale(0.8);
+    }
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @keyframes rolling {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }

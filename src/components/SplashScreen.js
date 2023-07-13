@@ -1,33 +1,54 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
+import "./SplashScreen.css";
 import { Howl } from "howler";
 import logo from "../assets/logo.png";
-import loadSound from "../assets/loading-sound-short.mp3";
+import loadSound from "../assets/loading.mp3";
 
 const SplashScreen = ({ onTransition }) => {
+  const [dots, setDots] = useState([]);
+
   useEffect(() => {
     const sound3 = new Howl({
       src: loadSound,
       onend: () => onTransition(),
     });
 
-    const timer = setTimeout(() => {
-      sound3.play();
-    }, 3000);
+    const timer = setInterval(() => {
+      setDots((prevDots) => {
+        if (prevDots.length < 6) {
+          return [
+            ...prevDots,
+            <div key={prevDots.length} className="dot"></div>,
+          ];
+        } else {
+          clearInterval(timer);
+          sound3.play();
+          return [
+            ...prevDots,
+            <div key={prevDots.length} className="dot dot-middle"></div>,
+            <div key={prevDots.length + 1} className="dot"></div>,
+            <div key={prevDots.length + 2} className="dot"></div>,
+            <div key={prevDots.length + 3} className="dot"></div>,
+            <div key={prevDots.length + 4} className="dot"></div>,
+            <div key={prevDots.length + 5} className="dot"></div>,
+            <div key={prevDots.length + 6} className="dot"></div>,
+          ];
+        }
+      });
+    }, 450);
 
     return () => {
-      clearTimeout(timer);
+      clearInterval(timer);
       sound3.pause();
     };
   }, [onTransition]);
 
   return (
-    <div className="splash-screen">
+    <div className="splash-container">
       <div className="loading-container">
         <img src={logo} alt="Logo" className="logo" />
         <div className="loading-animation">
-          <div className="dot1"></div>
-          <div className="dot2"></div>
-          <div className="dot3"></div>
+          <div className="rolling-dice">{dots.map((dot) => dot)}</div>
         </div>
       </div>
     </div>
