@@ -18,20 +18,20 @@ const SplashScreen = ({ onTransition }) => {
         if (prevDots.length < 6) {
           return [
             ...prevDots,
-            <div key={prevDots.length} className="dot"></div>,
+            <div key={prevDots.length} className="dot-load"></div>,
           ];
         } else {
           clearInterval(timer);
           sound3.play();
           return [
             ...prevDots,
-            <div key={prevDots.length} className="dot dot-middle"></div>,
-            <div key={prevDots.length + 1} className="dot"></div>,
-            <div key={prevDots.length + 2} className="dot"></div>,
-            <div key={prevDots.length + 3} className="dot"></div>,
-            <div key={prevDots.length + 4} className="dot"></div>,
-            <div key={prevDots.length + 5} className="dot"></div>,
-            <div key={prevDots.length + 6} className="dot"></div>,
+            <div key={prevDots.length} className="dot-load dot-middle"></div>,
+            <div key={prevDots.length + 1} className="dot-load"></div>,
+            <div key={prevDots.length + 2} className="dot-load"></div>,
+            <div key={prevDots.length + 3} className="dot-load"></div>,
+            <div key={prevDots.length + 4} className="dot-load"></div>,
+            <div key={prevDots.length + 5} className="dot-load"></div>,
+            <div key={prevDots.length + 6} className="dot-load"></div>,
           ];
         }
       });
