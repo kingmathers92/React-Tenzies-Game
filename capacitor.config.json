@@ -1,11 +1,8 @@
 {
-    "appId": "io.ionic.tenzies",
-    "appName": "Tenzies",
-    "bundledWebRuntime": false,
-    "npmClient": "npm",
-    "webDir": "build",
-    "server": {
-      "url": "http://192.168.1.6:3000",
-      "cleartext": true
-    }
-  }
+  "appId": "io.ionic.tenzies",
+  "appName": "Tenzies",
+  "bundledWebRuntime": true,
+  "npmClient": "npm",
+  "webDir": "build"
+}
+

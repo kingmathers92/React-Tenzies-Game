@@ -2,7 +2,7 @@
   "name": "react-tenzies-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://kingmathers92.github.io/React-Tenzies-Game",
+  "homepage": "/React-Tenzies-Game",
   "dependencies": {
     "@babel/core": "^7.22.9",
     "@capacitor/android": "^5.2.0",
