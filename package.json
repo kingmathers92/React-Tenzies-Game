@@ -2,10 +2,10 @@
   "name": "react-tenzies-game",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/React-Tenzies-Game",
+  "homepage": "https://kingmathers92.github.io/React-Tenzies-Game",
   "dependencies": {
     "@babel/core": "^7.22.9",
-    "@capacitor/android": "^5.2.0",
+    "@capacitor/android": "5.2.0",
     "@capacitor/core": "^5.2.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",

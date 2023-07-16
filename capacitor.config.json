@@ -1,7 +1,7 @@
 {
   "appId": "io.ionic.tenzies",
   "appName": "Tenzies",
-  "bundledWebRuntime": true,
+  "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "build"
 }
