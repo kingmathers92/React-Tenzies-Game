@@ -1,4 +1,4 @@
-package io.ionic.tenzies;
+package com.devstuff.tenzies;
 
 import com.getcapacitor.BridgeActivity;
 

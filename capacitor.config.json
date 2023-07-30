@@ -1,8 +1,10 @@
 {
-  "appId": "io.ionic.tenzies",
+  "appId": "com.devstuff.tenzies",
   "appName": "Tenzies",
-  "bundledWebRuntime": false,
   "npmClient": "npm",
-  "webDir": "build"
+  "webDir": "build",
+  "server": {
+    "url": "https://kingmathers92.github.io/React-Tenzies-Game",
+    "cleartext": true
+  }
 }
-
